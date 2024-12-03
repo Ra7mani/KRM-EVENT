@@ -1,0 +1,155 @@
+<div id="request-modal" class="reglog-modal-wrapper mfp-hide clearfix">
+  <div id="booking" class="section">
+    <div class="section-center">
+      <div class="container">
+        <div class="row">
+          <div class="booking-form">
+            <div class="form-header">
+              <h1>Make your Request</h1>
+            </div>
+            <form [formGroup]="requestForm" (ngSubmit)="addRequest()">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Event Name"
+                  formControlName="name"
+                  required
+                />
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="date"
+                      formControlName="date"
+                      required
+                    />
+                    <span class="form-label">Event Date</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="number"
+                      placeholder="Event Capacity"
+                      formControlName="capacity"
+                      required
+                    />
+                    <span class="form-label">Capacity</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Enter Event City"
+                      formControlName="city"
+                      required
+                    />
+                    <span class="form-label">City</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Event Location"
+                      formControlName="adresse"
+                      required
+                    />
+                    <span class="form-label">Address</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="number"
+                      placeholder="Ticket Price"
+                      formControlName="price"
+                      required
+                    />
+                    <span class="form-label">Price</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select
+                      class="form-control"
+                      formControlName="categoryId"
+                      required
+                    >
+                      <option value="" selected hidden>Categories</option>
+                      <option style="color: black; background-color:rgba(0, 0, 0, 0.292);" 
+                        *ngFor="let category of categories"
+                        [value]="category.id"
+                      > 
+                        {{ category.categoryName }}
+                      </option>
+                    </select>
+                    <span class="select-arrow"></span>
+                    <span class="form-label">Categories</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <select
+                      id="hashtags"
+                      class="form-control"
+                      formControlName="hashtagsIds"
+                      multiple
+                      required
+                    >
+                    <option style="color: black; " 
+                    *ngFor="let hashtag of hashtags"
+                    [value]="hashtag.id"
+                  >
+                    {{ hashtag.hashTagName }}
+                  </option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Description..."
+                  formControlName="description"
+                  required
+                />
+              </div>
+
+              <div class="form-btn">
+                <button
+                  class="submit-btn"
+                  type="submit"
+                  [disabled]="requestForm.invalid"
+                >
+                  Send
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="popup-modal-dismiss" href="#!">
+    <i class="fas fa-times"></i>
+  </a>
+</div>

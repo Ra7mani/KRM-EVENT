@@ -1,0 +1,249 @@
+<router-outlet></router-outlet>
+
+<!-- breadcrumb-section - start -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+  <div class="jarallax" style="background-image: url(assets/images/breadcrumb/0.breadcrumb-bg.jpg);">
+    <div class="overlay-black">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+
+            <!-- breadcrumb-title - start -->
+            <div class="breadcrumb-title text-center mb-50">
+              <span class="sub-title">KRM events</span>
+              <h2 class="big-title">KRM <strong>event</strong></h2>
+            </div>
+            <!-- breadcrumb-title - end -->
+
+            <!-- breadcrumb-list - start -->
+            <div class="breadcrumb-list">
+              <ul>
+                <li class="breadcrumb-item">
+                  <a [routerLink]="['/home']" class="breadcrumb-link">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Event Listing</li>
+              </ul>
+            </div>
+            <!-- breadcrumb-list - end -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumb-section - end -->
+
+<!-- event-search-section - start -->
+<section id="event-search-section" class="event-search-section clearfix" style="background-image: url(assets/images/special-offer-bg.png);">
+  <div class="container">
+    <div class="row">
+
+      <!-- section-title - start -->
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="section-title">
+          <small class="sub-title">Find the best events</small>
+          <h2 class="big-title">Event <strong>Search</strong></h2>
+          
+        </div>
+      </div>
+      <!-- section-title - end -->
+
+      <!-- search-form - start -->
+      <div class="col-lg-8 col-md-12 col-sm-12">
+        <div class="search-form form-wrapper">
+          <form>
+            <ul>
+             
+              <li>
+                <span class="title">Event category</span>
+                <select id="event-category-select" (change)="onCategorySelect($event)" >
+                  <option value="" selected hidden>Categories</option>
+                  <option style="color: black; background-color:rgba(0, 0, 0, 0.292);" 
+                    *ngFor="let category of categories"
+                    [value]="category.id"
+                  > 
+                    {{ category.categoryName }}
+                  </option>
+                </select>
+              </li>
+              <li>
+                <button type="submit" (click)="searchEventsByCategory()"  class="submit-btn" >Search Event Now</button>
+                
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+      <!-- search-form - end -->
+
+    </div>
+  </div>
+</section>
+<!-- event-search-section - end -->
+
+<!-- event-section - start -->
+<section id="event-section" class="event-section bg-gray-light sec-ptb-100 clearfix">
+  <div class="container">
+    <div class="row">
+
+      <!-- sidebar-section - start -->
+      <div class="col-lg-3 col-md-12 col-sm-12">
+        <div class="sidebar-section">
+
+          <!-- spacial-event-wrapper - start -->
+          <div class="spacial-event-wrapper text-center" style="background-image: url(assets/images/spacial-event-bg.jpg);">
+            <div class="overlay-black">
+              <p class="sub-title white-color mb-30">26 DECEMBER 2018</p>
+              <h2 class="title-large white-color mb-30">
+                AMSTERDAM
+                <strong class="yellow-color">PHP CONFERENCE</strong>
+              </h2>
+             
+            </div>
+          </div>
+          <!-- spacial-event-wrapper - end -->
+
+        </div>
+      </div>
+      <!-- sidebar-section - end -->
+
+      <!-- event-list-section - start -->
+      <div class="col-lg-9 col-md-12 col-sm-12">
+        <div class="search-result-form">
+          <form>
+            <ul>
+              <li>
+                <a  (click)="getEvents()"    > Show All</a>
+              </li>
+              <li>
+               
+
+                <span   class="result-text">{{ paginatedEvents.length }} Search results from {{ events.length }} events</span>
+              </li>
+          
+              
+            </ul>
+              
+            
+          </form>
+          <button  style="margin-left:800px; " class="favoris-toggle-btn" (click)="toggleFavoritesView()">
+                
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="list-style" class="tab-pane fade in active show">
+          <div class="row justify-content-center">
+            <!-- Dynamic Event Items -->
+            <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let event of paginatedEvents">
+              <div class="event-grid-item">
+                <!-- event-image - start -->
+                <div class="event-image">
+                  <div class="post-date">
+                    <span class="date">{{ getDay(event.date) }}</span>
+                    <small class="month">{{ getMonth(event.date) }}</small>
+                  </div>
+                  <img src="assets/images/event/1.event-grid.jpg" alt="Image_not_found" />
+                </div>
+                <!-- event-image - end -->
+              
+                <!-- event-content - start -->
+                <div class="event-content">
+                  <div class="event-title mb-30">
+                    <div class="row"> 
+                      <div class="col" style="padding-right: 10px;">
+                        <h3 class="title">{{ event.name }}</h3>
+                      </div>
+                      <div class="col-lg-4 d-flex align-items-center" style="padding-left: 1000x;">
+                       
+                      <div  class="me-2" style="padding-left: 70px;">
+                        <!-- Boutons Favoris -->
+                        <button *ngIf="isFavorite(event.id)" (click)="removeFromFavorites(event.id)" class="btn p-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                          </svg>
+                        </button>
+                      
+                        <button *ngIf="!isFavorite(event.id) && event.capacity !== 0" (click)="addToFavorites(event.id)" class="btn p-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                          </svg>
+                        </button>
+
+                      </div>
+                         <!-- Menu déroulant (3 points) -->
+                         <div class="dropdown " >
+                          <button class=" p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addhashtagModal"  (click)="openModal(event.id)" >Profil</a>
+
+<!--                               <a class="dropdown-item" [routerLink]="['/home/viewprofil', event.id]">Profil</a>
+ -->                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                    </div>
+              
+                    <span class="ticket-price yellow-color">Tickets from ${{ event.price }}</span>
+                  </div>
+              
+                  <div class="event-post-meta ul-li-block mb-30">
+                    <ul>
+                      <li>
+                        <span class="icon"><i class="far fa-clock"></i></span>
+                        Start {{ getTime(event.date) }}
+                      </li>
+                      <li>
+                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                        {{ event.adresse }}
+                      </li>
+                    </ul>
+                  </div>
+              
+                  <!-- Vérifier si l'événement est sold-out -->
+                  <img *ngIf="event.capacity === 0" src="assets/images/soldout3.png" class="sold-out-image" alt="Sold Out"  style="height: 50%;  width: 60%; "/>
+
+              
+                  <a *ngIf="verifconnect() && event.capacity !== 0" [routerLink]="['/home/event-annonceur-details', event.id]" class="tickets-details-btn">Tickets & Details</a>
+                </div>
+                <!-- event-content - end -->
+              </div>
+              
+            </div>
+            <!-- Dynamic Event Items - end -->
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination ul-li clearfix">
+          <ul>
+            <li class="page-item prev-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="goToPreviousPage()">Prev</a>
+            </li>
+            <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i + 1 === currentPage">
+              <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+            </li>
+            <li class="page-item next-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="goToNextPage()">Next</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- event-list-section - end -->
+
+    </div>
+  </div>
+</section>
+<!-- event-section - end -->
+
+
+
+

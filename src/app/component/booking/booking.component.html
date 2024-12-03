@@ -1,0 +1,270 @@
+
+		<!-- breadcrumb-section - start
+		================================================== -->
+		<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+			<div class="jarallax" style="background-image: url(assets/images/breadcrumb/0.breadcrumb-bg.jpg);">
+				<div class="overlay-black">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-6 col-md-12 col-sm-12">
+
+								<!-- breadcrumb-title - start -->
+								<div class="breadcrumb-title text-center mb-50">
+									<span class="sub-title">ticket booking</span>
+									<h2 class="big-title">KRM <strong>booking</strong></h2>
+								</div>
+								<!-- breadcrumb-title - end -->
+
+								<!-- breadcrumb-list - start -->
+								<div class="breadcrumb-list">
+									<ul>
+										<li class="breadcrumb-item"><a [routerLink]="['/home']" class="breadcrumb-link">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page"><a [routerLink]="['/home/event-booking']" class="breadcrumb-link">Booking</a></li>
+									</ul>
+								</div>
+								<!-- breadcrumb-list - end -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- breadcrumb-section - end
+		================================================== -->
+
+
+
+
+
+	
+
+
+
+		<!-- booking-section - start
+
+		
+		================================================== -->
+		
+		<section id="booking-section" class="booking-section bg-gray-light sec-ptb-100 clearfix">
+			<div class="container">
+				<div class="row">
+
+					<!-- booking-content-wrapper - start -->
+					<div class="col-lg-8 col-md-12 col-sm-12">
+						<div class="booking-content-wrapper">
+
+
+
+
+							<!-- reg-info - start -->
+							<div class="reg-info mb-50">
+
+								<!-- section-title - start -->
+								<div class="section-title " style="margin-bottom: 20px;">
+									
+								</div>
+								<!-- section-title - end -->
+
+								<!-- row - start -->
+								<div class="row">
+
+									<!-- ticket-buying-form - start -->
+									<div class="col-lg-6 col-md-6 col-sm-12">
+										<div class="payment-form form-wrapper">
+											<h3 class="form-title">billing <strong>information</strong></h3>
+
+											<form  [formGroup]="bookingForm" >
+												<div class="form-item">
+													<input type="text" formControlName="address" placeholder="Address">
+   											 <span style="color: red; font-size: small;"   *ngIf="bookingForm.get('address')?.invalid && bookingForm.get('address')?.touched">
+     													 Please enter a valid address 
+											</span>
+												</div>
+
+												
+
+												<div class="form-item" style="margin-bottom: 50px; margin-top: 22px;">
+													<input type="text" formControlName="city" placeholder="City">
+													<span style="color: red; font-size: small;"  *ngIf="bookingForm.get('city')?.invalid && bookingForm.get('city')?.touched">
+													  City is required.
+													</span>
+												  </div>
+
+												  <div class="form-item">
+													<input type="text" formControlName="zipCode" placeholder="Zip Code">
+													<span  style="color: red; font-size: small;" *ngIf="bookingForm.get('zipCode')?.invalid && bookingForm.get('zipCode')?.touched">
+													  Zip Code is required.
+													</span>
+												  </div>
+											</form>
+										</div>
+									</div>
+									<!-- ticket-buying-form - end -->
+
+									<!-- payment-form - start -->
+									<div class="col-lg-6 col-md-6 col-sm-12">
+										<div class="payment-form form-wrapper">
+											<h3 class="form-title">payment</h3>
+
+											<form  [formGroup]="bookingForm" >
+												<div class="form-item">
+													<select formControlName="creditCard"  class="form-item" style="border-color: whitesmoke;"  >
+														<option   value="" >Select Credit Card</option>
+														<option>Visa</option>
+														<option>MasterCard</option>
+													</select>
+													<span style="color: red; font-size: small;"  *ngIf="bookingForm.get('creditCard')?.invalid && bookingForm.get('creditCard')?.touched">
+														Please select a credit card.
+													  </span>
+												</div>
+												<div class="form-item">
+													<input type="text" formControlName="cardNumber" placeholder="Card Numbers">
+   											 <span style="color: red; font-size: small;"   *ngIf="bookingForm.get('cardNumber')?.invalid && bookingForm.get('cardNumber')?.touched">
+     													 Please enter a valid card number (16 digits).
+											</span>
+												</div>
+
+												<div class="expired-date-form">
+													<h3 class="title-text">expired date</h3>
+													<ul>
+
+														<li>
+															<div class="form-item">
+																<select formControlName="month">
+																	<option value="">Month</option>
+																	<option>01</option>
+																	<option>02</option>
+																	<option>03</option>
+																	<option>04</option>
+																	<option>05</option>
+																	<option>06</option>
+																	<option>07</option>
+																	<option>08</option>
+																	<option>09</option>
+																	<option>10</option>
+																	<option>11</option>
+																	<option>12</option>
+																	<!-- Add other months -->
+																  </select>
+																  <span style="color: red; font-size: small;" *ngIf="bookingForm.get('month')?.invalid && bookingForm.get('month')?.touched">
+																	Please select a month.
+																  </span>
+															
+															</div>
+														</li>
+
+														<li>
+															<div class="form-item">
+																<select formControlName="year">
+																	<option value="">Year</option>
+																	<option>2024</option>
+																	<option>2025</option>
+																	<option>2026</option>
+																	<option>2027</option>
+																	<option>2028</option>
+																	<option>2029</option>
+																	<option>2030</option>
+																	<option>2031</option>
+																  </select>
+																  <span  style="color: red; font-size: small;"  *ngIf="bookingForm.get('year')?.invalid && bookingForm.get('year')?.touched">
+																	Please select a year.
+																  </span>
+															</div>
+														</li>
+
+														<li>
+															<div class="form-item">
+																<input type="text" formControlName="csc" placeholder="CSC">
+											<span style="color: red; font-size: small;"  *ngIf="bookingForm.get('csc')?.invalid && bookingForm.get('csc')?.touched">
+											Please enter a valid CSC (3-4 digits).
+												</span>
+											</div>
+														</li>
+
+													</ul>
+												</div>
+											</form>
+										</div>
+									</div>
+									<!-- payment-form - end -->
+									<div class="text-center" style="margin-top: 20px;">
+										<a (click)="bookTickets()"  class="custom-btn">pay now</a>
+
+										
+									</div>
+								</div>
+								<!-- row - end -->
+
+							</div>
+							<!-- reg-info - end -->
+
+
+
+						
+							
+						</div>
+					</div>
+					<!-- booking-content-wrapper - end -->
+
+					<!-- sidebar-section - start -->
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="sidebar-section">
+
+							<!-- section-title - start -->
+							<div class="section-title mb-30">
+								<h2 class="big-title">ticket <strong>info</strong></h2>
+							</div>
+							<!-- section-title - end -->
+
+							<!-- location-wrapper - start -->
+							<div class="location-wrapper bg-white">
+
+								<div class="title-wrapper">
+									
+									<span class="icon">
+										<i class="fas fa-bookmark"></i>
+									</span>
+									<div class="title-content " style="margin-top: 18px;">
+										
+										<h3>{{name}}</h3>
+									</div>
+								</div>
+								<div class="location-info-list ul-li-block clearfix">
+									<span class="area-name"> LOCATION: {{adress}}</span>
+									<ul>
+										<li><i class="fas fa-arrow-circle-right"></i> {{city}}, {{name}}</li>
+										<li><i class="fas fa-arrow-circle-right"></i> {{ getday(date) }} {{ getMonth(date) }} {{ getyear(date) }}</li>
+										<li><i class="fas fa-arrow-circle-right" ></i>  <strong style="margin-left: 10px;">{{ gettime(date) }}</strong> </li>
+									</ul>
+								</div>
+								
+								<div class="title-wrapper">
+									<small class="up-arrow-icon">
+										<i class="fas fa-chevron-circle-up"></i>
+									</small>
+									<span class="icon">
+										<i class="fas fa-link"></i>
+									</span>
+									
+									<div class="title-content">
+										<small>contact information</small>
+										<a [routerLink]="['/home/contact']"><h3>KRM	 staff</h3> </a>
+									</div>
+								</div>
+								
+							</div>
+							<!-- location-wrapper - end -->
+							
+						</div>
+					</div>
+					<!-- sidebar-section - end -->
+					
+				</div>
+			</div>
+		</section>
+	
+		<!-- booking-section - end
+		================================================== -->
+
+

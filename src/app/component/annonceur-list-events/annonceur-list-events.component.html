@@ -1,0 +1,106 @@
+<!-- Breadcrumb Section -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+	<div class="jarallax" style="background-image: url(assets/images/breadcrumb/0.breadcrumb-bg.jpg);">
+	  <div class="overlay-black">
+		<div class="container">
+		  <div class="row justify-content-center">
+			<div class="col-lg-6 col-md-12 col-sm-12">
+			  <!-- Breadcrumb Title -->
+			  <div class="breadcrumb-title text-center mb-50">
+				<span class="sub-title">KRM Events</span>
+				<h2 class="big-title">KRM <strong>Events</strong></h2>
+			  </div>
+			  <!-- Breadcrumb List -->
+			  <div class="breadcrumb-list">
+				<ul>
+				  <li class="breadcrumb-item">
+					<a [routerLink]="['/home']" class="breadcrumb-link">Home</a>
+				  </li>
+				  <li class="breadcrumb-item active" aria-current="page">Event Listing</li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+  <!-- Event Section -->
+  <section id="event-section" class="event-section bg-gray-light sec-ptb-100 clearfix">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+		  <div class="search-result-form">
+			<ul class="nav event-layout-btngroup">
+			  <li>
+				<a class="active" data-toggle="tab" href="#list-style">
+				  <i class="fas fa-th-list"></i>
+				</a>
+			  </li>
+			</ul>
+		  </div>
+  
+		  <div class="tab-content">
+			<div id="list-style" class="tab-pane fade in active show">
+			  <!-- No Events Message -->
+			  <div *ngIf="events.length === 0" class="text-center" style="color: gray; font-size: 20px;">
+				<h3 style="color: gray;">No Events Yet</h3>
+			  </div>
+  
+			  <!-- Event List -->
+			  <div class="event-list-item clearfix" *ngFor="let event of currentPageEvents()">
+				<div class="event-image">
+				  <div class="post-date">
+					<span class="date">{{ getday(event.date) }}</span>
+					<small class="month">{{ getMonth(event.date) }}</small>
+				  </div>
+				  <img src="assets/images/event/event-1.jpg" alt="Event Image">
+				</div>
+  
+				<div class="event-content">
+				  <div class="event-title mb-15">
+					<h3 class="title">{{ event.city }} <strong>{{ event.name }}</strong></h3>
+					<span class="ticket-price yellow-color">Tickets from {{ event.price }} $</span>
+				  </div>
+				  <p class="discription-text mb-30">{{ event.description }}</p>
+				  <div class="event-info-list ul-li clearfix">
+					<ul>
+					  <li>
+						<span class="icon">
+						  <i class="fas fa-ticket-alt"></i>
+						</span>
+						<div class="info-content">
+						  <small>Max Seats</small>
+						  <h3>{{ event.capacity }} seats</h3>
+						</div>
+					  </li>
+					  <li>
+						<a [routerLink]="['/home/event-annonceur-details', event.id]" class="custom-btn" style="margin-left: 500px;">Event Details</a>
+					  </li>
+					</ul>
+				  </div>
+				</div>
+			  </div>
+  
+			  <!-- Pagination -->
+			  <div class="pagination ul-li clearfix">
+				<ul>
+				  <li class="page-item prev-item" (click)="changePage(currentPage - 1)" [class.disabled]="currentPage === 1">
+					<a class="page-link">Prev</a>
+				  </li>
+				  <li *ngFor="let page of pages" class="page-item" [class.active]="currentPage === page" (click)="changePage(page)">
+					<a class="page-link">{{ page }}</a>
+				  </li>
+				  <li class="page-item next-item" (click)="changePage(currentPage + 1)" [class.disabled]="currentPage === totalPages">
+					<a class="page-link">Next</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+  

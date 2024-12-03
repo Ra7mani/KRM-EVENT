@@ -1,0 +1,114 @@
+<!-- breadcrumb-section - start -->
+<section id="breadcrumb-section" class="breadcrumb-section clearfix">
+	<div class="jarallax" style="background-image: url(assets/images/breadcrumb/0.breadcrumb-bg.jpg);">
+	  <div class="overlay-black">
+		<div class="container">
+		  <div class="row justify-content-center">
+			<div class="col-lg-6 col-md-12 col-sm-12">
+			  <div class="breadcrumb-title text-center mb-50">
+				<span class="sub-title">KRM events</span>
+				<h2 class="big-title">KRM <strong>event</strong></h2>
+			  </div>
+			  <div class="breadcrumb-list">
+				<ul>
+				  <li class="breadcrumb-item"><a [routerLink]="['/home']" class="breadcrumb-link">Home</a></li>
+				  <li class="breadcrumb-item active" aria-current="page">Event Request</li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+  <!-- breadcrumb-section - end -->
+  
+  <!-- event-section - start -->
+  <section id="event-section" class="event-section bg-gray-light sec-ptb-100 clearfix">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+		  <div class="search-result-form">
+			<form action="#!">
+			  <ul></ul>
+			</form>
+			<ul class="nav event-layout-btngroup">
+			  <li><a class="active" data-toggle="tab" href="#list-style"><i class="fas fa-th-list"></i></a></li>
+			</ul>
+		  </div>
+		  <div class="tab-content">
+			<div id="list-style" class="tab-pane fade in active show">
+			  <div *ngIf="requests.length === 0" class="text-center" style="color: gray; font-size: 20px;">
+				<h3 style="color: gray;">No requests yet</h3>
+			  </div>
+			  <!-- Event List -->
+			  <div *ngFor="let request of paginatedRequests" class="event-list-item clearfix">
+				<!-- Titre et commentaire -->
+				<div class="event-title">
+				  <h3 class="title"><strong>{{ request.eventDTO.name }}</strong></h3>
+				  <span class="ticket-price yellow-color">{{ request.comment }}</span>
+				</div>
+				<!-- Statut avec cercle coloré -->
+				<span class="status">
+				  <i
+					class="fa fa-circle me-2"
+					[style.color]="
+					  request.comment === 'accepted' 
+						? 'green' 
+						: request.comment === 'rejected' 
+						? 'red'  
+						: 'gold'  
+					"
+					style="font-size: 10px;"
+				  ></i>
+				  <span class="status-text">{{ request.comment }}</span>
+				</span>
+  
+				<!-- Actions -->
+				<div class="left-section">
+				  <i
+					class="fas fa-trash delete-icon"
+					[style.color]="
+					  request.comment === 'accepted' 
+					  ? 'gray'  
+					  : request.comment === 'rejected' 
+					  ? 'rgb(154, 32, 32)'  
+					  : 'rgb(154, 32, 32)' 
+					" 
+					[style.cursor]="
+					  request.comment === 'accepted' 
+					  ? 'not-allowed'  
+					  : 'pointer'  
+					"
+					[ngClass]="{'disabled': request.comment === 'accepted'}"  
+					[style.pointer-events]="request.comment === 'accepted' ? 'none' : 'auto'"  
+					(click)="deleteRequest(request)"
+				  ></i>
+				</div>
+			  </div>
+			  <!-- Pagination -->
+			  <div class="pagination ul-li clearfix">
+				<ul>
+				  <li class="page-item prev-item" [class.disabled]="currentPage === 1" (click)="goToPreviousPage()">
+					<a class="page-link">Prev</a>
+				  </li>
+				  <li
+					class="page-item"
+					*ngFor="let page of [].constructor(totalPages); let i = index"
+					[class.active]="currentPage === (i + 1)"
+					(click)="goToPage(i + 1)"
+				  >
+					<a class="page-link">{{ i + 1 }}</a>
+				  </li>
+				  <li class="page-item next-item" [class.disabled]="currentPage === totalPages" (click)="goToNextPage()">
+					<a class="page-link">Next</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+  <!-- event-section - end -->

@@ -1,0 +1,125 @@
+<!-- header-section - start -->
+<header id="header-section" class="header-section sticky-header-section not-stuck clearfix">
+  <!-- header-bottom - start -->
+  <div class="header-bottom" [ngStyle]="{'background-color': isScrolled ? 'rgba(0, 0, 9, 0.7)' : 'transparent'}">
+    <div class="container">
+      <div class="row">
+        <!-- site-logo-wrapper - start -->
+        <div class="col-lg-3">
+          <div class="site-logo-wrapper">
+            <!-- Logo can be added here -->
+          </div>
+        </div>
+        <!-- site-logo-wrapper - end -->
+
+        <!-- mainmenu-wrapper - start -->
+        <div class="col-lg-9">
+          <div class="mainmenu-wrapper">
+            <div class="row">
+              <!-- menu-item-list - start -->
+              <div class="col-lg-10">
+                <div class="menu-item-list ul-li clearfix">
+                  <ul>
+                    <li [ngClass]="{'active': activeMenu === 'home'}" (click)="setActive('home')" class="menu-item-has-children">
+                      <a href="#!">home</a>
+                    </li>
+                    <li [ngClass]="{'active': activeMenu === 'about'}" (click)="setActive('about')" class="menu-item-has-children">
+                      <a [routerLink]="['/home/details']">about</a>
+                    </li>
+                    <li [ngClass]="{'active': activeMenu === 'speaker'}" (click)="setActive('speaker')">
+                      <a [routerLink]="['/home/service']">Services</a>
+                    </li>
+
+                    <!-- Events, Blogs, and Gallery Logic -->
+                    <ng-container *ngIf="verifrole(); else defaultMenu">
+                      <!-- Custom menu for Announcer -->
+                      <li [ngClass]="{'active': activeMenu === 'event-list'}" (click)="setActive('event-list')">
+                        <a [routerLink]="['/home/annonceur-list-event']">Events</a>
+                      </li>
+                      <li [ngClass]="{'active': activeMenu === 'event-request'}" (click)="setActive('event-request')">
+                        <a [routerLink]="['/home/annonceur-list-request']"> Requests</a>
+                      </li>
+                    </ng-container>
+
+                    <ng-template #defaultMenu>
+                      <!-- Default menu for other roles -->
+                      <li [ngClass]="{'active': activeMenu === 'events'}" (click)="setActive('events')" class="menu-item-has-children">
+                        <a [routerLink]="['/home/events']">events</a>
+                      </li>
+                      <li [ngClass]="{'active': activeMenu === 'blogs'}" (click)="setActive('blogs')" class="menu-item-has-children">
+                        <a [routerLink]="['/home/blogs']">blogs</a>
+                      </li>
+                      <li [ngClass]="{'active': activeMenu === 'gallery'}" (click)="setActive('gallery')">
+                        <a [routerLink]="['/home/gallery']">gallery</a>
+                      </li>
+                    </ng-template>
+
+                    <li [ngClass]="{'active': activeMenu === 'contact'}" (click)="setActive('contact')" class="menu-item-has-children">
+                      <a [routerLink]="['/home/contact']">contact</a>
+                    </li>
+
+                   
+
+                    <ng-template #notloggedIn></ng-template>
+                  </ul>
+                </div>
+              </div>
+              <!-- menu-item-list - end -->
+
+              <!-- menu-item-list - start -->
+              <div class="col-lg-2">
+                <div class="user-search-btn-group ul-li clearfix">
+                  <ul>
+                    <li class="nav-item" *ngIf="!verif(); else notloggedIn">
+                      <app-login></app-login>
+                    </li>
+                    <ng-template #notloggedIn></ng-template>
+
+                    <li *ngIf="verif(); else notloggedIn">
+                      <button type="button" class="toggle-overlay search-btn" >
+                        <a (click)="logOut()" type="submit">
+                          <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                        
+                      </button>
+                     
+                    </li>
+
+                    <li *ngIf="verif(); else notloggedIn">
+                      <button type="button" class="toggle-overlay search-btn" >
+                        <a [routerLink]="['/home/profil']" type="submit">
+                          <i class="fas fa-user"></i>
+                        </a>
+                        
+                      </button>
+                     
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+              <!-- menu-item-list - end -->
+            </div>
+          </div>
+        </div>
+        <!-- mainmenu-wrapper - end -->
+      </div>
+    </div>
+  </div>
+  <!-- header-bottom - end -->
+</header>
+<!-- header-section - end -->
+
+<script>
+  const searchButton = document.getElementById('searchButton');
+  const searchBody = document.getElementById('searchBody');
+  const closeButton = document.getElementById('closeButton');
+
+  searchButton.addEventListener('click', function() {
+    searchBody.style.display = 'block'; 
+  });
+
+  closeButton.addEventListener('click', function() {
+    searchBody.style.display = 'none'; 
+  });
+</script>

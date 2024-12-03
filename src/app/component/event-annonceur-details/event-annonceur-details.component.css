@@ -1,0 +1,215 @@
+.ticket-booking {
+    margin-top: 20px;
+  }
+  
+  .ticket-booking label {
+    font-weight: bold;
+  }
+  
+  .ticket-booking input {
+    margin: 5px 0;
+    padding: 5px;
+    width: 60px;
+  }
+  
+  .price, .total-price {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  #cc{
+    margin-top: 102px;
+  }
+ /* Conteneur de la liste des tickets avec un scroll vertical */
+.tickets-scroll-container {
+  max-height: 400px;  /* Limite la hauteur pour afficher un seul ticket à la fois */
+  overflow-y: scroll;  /* Permet le défilement vertical */
+  padding-right: 10px;  /* Ajouter un peu de padding pour éviter que le scroll touche les bords */
+  border: 1px solid #ddd;  /* Bordure pour délimiter la zone */
+  margin-top: 20px;  /* Espacement au-dessus */
+}
+
+/* Liste des tickets */
+.tickets-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Style de chaque ticket */
+.ticket-item {
+  background-color: #f9f9f9;  /* Fond clair pour chaque ticket */
+  border-bottom: 1px solid #ddd;  /* Un trait de séparation entre les tickets */
+  padding: 15px;
+  margin-bottom: 10px;  /* Espacement entre chaque ticket */
+  border-radius: 8px;  /* Coins arrondis */
+}
+
+/* Détails du ticket */
+.ticket-item .ticket-details p {
+  margin: 5px 0;
+}
+
+
+/* Style pour les liens de contact */
+.contact-links ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.contact-links ul li {
+  margin: 10px 0;
+}
+
+.contact-links ul li a {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.contact-links ul li a .icon {
+  margin-right: 10px;
+}
+
+.contact-links ul li a:hover {
+  text-decoration: underline;
+}
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.add-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+}
+
+.coupon-form {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-actions {
+  text-align: right;
+}
+
+
+
+
+.coupon-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.coupon-table th, .coupon-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: darkred;
+}
+
+.empty-message {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+.modal-footer {
+  text-align: right;
+}
+
+.close-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #c82333;
+}
+.coupon-table-container {
+  max-height: 300px; /* Limite la hauteur de la liste */
+  overflow-y: auto; /* Active le défilement vertical si nécessaire */
+  border: 1px solid #ddd; /* Facultatif : ajoute une bordure pour délimiter la zone */
+  border-radius: 8px; /* Facultatif : coins arrondis */
+  margin-top: 10px; /* Espacement au-dessus de la table */
+}

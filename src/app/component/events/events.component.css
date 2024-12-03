@@ -1,0 +1,12 @@
+.sold-out-image {
+    display: block; /* Pour que l'image soit un élément de type bloc */
+    margin: 0 auto; /* Centrer l'image horizontalement */
+    width: 100px; /* Largeur de l'image, ajustez selon vos besoins */
+    height: auto; /* Conserver le ratio de l'image */
+    position: absolute; /* Pour pouvoir la positionner par rapport à l'élément parent */
+    top: 50%; /* Positionner au milieu de l'élément parent (verticalement) */
+    left: 50%; /* Positionner au milieu de l'élément parent (horizontalement) */
+    transform: translate(-50%, -50%); /* Ajuste la position pour centrer parfaitement */
+    z-index: 10; /* Assurez-vous que l'image soit au-dessus de tout autre contenu */
+  }
+  
